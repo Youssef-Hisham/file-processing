@@ -15,7 +15,8 @@ public:
     int tID, tAge;
     char tName[10], tSubject[10];
 };
- 
+int ar[1000]{};
+int arr[1000]{};
 void write_Student()
 {
     fstream outFile("Student.txt", ios::out | ios::app);
@@ -29,7 +30,13 @@ void write_Student()
  
         cout << "Enter Student ID : ";
         cin >> s1.sID;
- 
+        arr[s1.sID]++;
+        while(arr[s1.sID] != 1){
+            cout << "this id is valid, input another id";
+            cin >> s1.sID;
+            arr[s1.sID]++;
+            }
+
         cout << "Enter Student Age : ";
         cin >> s1.sAge;
  
@@ -47,7 +54,6 @@ void write_Student()
 void write_Teacher()
 {
     fstream outFile("Teacher.txt", ios::out | ios::app);
- 
     Tracher t1;
     char c = 'y';
     while (c == 'y')
@@ -57,6 +63,12 @@ void write_Teacher()
  
         cout << "Enter Teacher ID : ";
         cin >> t1.tID;
+        if(arr[t1.tID] == 0)
+        arr[t1.tID] = 1;
+        else {
+            cout << "this id is valid, input another id";
+            cin >> t1.tID;
+        }
  
         cout << "Enter Teacher Age : ";
         cin >> t1.tAge;
@@ -489,7 +501,7 @@ int main()
             }
             break;
         }
- 
+
         cout << "Do you want to do another Operation ? [y/n] -> ";
         cin >> c;
         if (c != 'y')
