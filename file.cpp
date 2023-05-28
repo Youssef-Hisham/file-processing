@@ -63,12 +63,12 @@ void write_Teacher()
  
         cout << "Enter Teacher ID : ";
         cin >> t1.tID;
-        if(arr[t1.tID] == 0)
-        arr[t1.tID] = 1;
-        else {
+        arr[t1.tID]++;
+        while(arr[t1.tID] != 1){
             cout << "this id is valid, input another id";
             cin >> t1.tID;
-        }
+            arr[t1.tID]++;
+            }
  
         cout << "Enter Teacher Age : ";
         cin >> t1.tAge;
